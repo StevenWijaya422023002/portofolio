@@ -1,6 +1,6 @@
 <x-app-layout>
 <div class="px-6 py-8  min-h-screen">
-  <h2 class="text-3xl font-bold mb-6 text-center text-gray-800 border-b-2 border-indigo-500 inline-block pb-1">
+  <h2 class="text-4xl font-bold mb-6 text-center text-gray-800 border-b-2 font-mono">
     Foto Kamar
   </h2>
 
