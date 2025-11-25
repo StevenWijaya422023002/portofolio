@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,15 @@
     <title>WijayaKost</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
 </head>
-<body >
+<body  class="bg-slate-100">
  <nav class="bg-slate-900 py-2 top-0 right-0 left-0 z-99 fixed">
         <div class="container mx-auto flex items-center justify-between py-2 px-8  ">
 
@@ -19,13 +25,14 @@
                 </a>
             </div>
 
-            <div class="flex gap-8 flex-1 justify-center font-semibold text-white">
-                <a class="hover:text-orange-600" href="#home">Home</a>
-                <a class="hover:text-orange-600" href="#kamar">Tipe Kamar</a>
-                <a class="hover:text-orange-600" href="#foto">Foto Kamar</a>
-                <a class="hover:text-orange-600" href="">Lokasi</a>
-                <a class="hover:text-orange-600" href="">Review</a>
+           <div class="flex gap-12 flex-1 justify-center font-semibold text-white">
+                <a class=" transition hover:text-orange-600 whitespace-nowrap" href="#home">Home</a>
+                <a class=" transition hover:text-orange-600 whitespace-nowrap" href="#kamar">Tipe Kamar</a>
+                <a class=" transition hover:text-orange-600 whitespace-nowrap" href="#foto">Foto Kamar</a>
+                <a class=" transition hover:text-orange-600 whitespace-nowrap" href="#lokasi">Lokasi</a>
+                <a class=" transition hover:text-orange-600 whitespace-nowrap" href="#review">Review</a>
             </div>
+
 
             <div class="flex-1 flex justify-end text-white font-bold font-mono mr-8">
                 <button class="bg-orange-600 px-4 py-2 rounded-md hover:bg-orange-800 "><i class="fa-brands fa-whatsapp "></i>   Hubungi</button>
@@ -42,20 +49,28 @@
       
       <div class="absolute inset-0 bg-black/60"></div>
 
+    
+
+          <main class="relative text-white text-center mb-24 font-sans" data-aos="zoom-in" data-aos-easing="ease-in-sine" >
+              <h1 class="text-9xl font-bold mb-8" id="text">Wijaya<span class="text-orange-600">Kost</span></h1>
+
+              
+                <p class="text-center text-xl font-normal" id="multiple" style="display:none">tempat tinggal yang nyaman, aman, dan strategis di pusat kota <br> Nyaman, tenang, terjangkau </p>
+                 
+              
+          </main>
+
+          
+
       
-      <main class="relative text-white text-center mb-24 font-sans">
-          <h1 class="text-9xl font-bold mb-8">Wijaya<span class="text-orange-600">Kost</span></h1>
-          <p class="text-center text-xl font-normal">tempat tinggal yang nyaman, aman, dan strategis di pusat kota.</p>
-          <p class="text-center text-xl font-normal">Nyaman, tenang, terjangkau</p>
-      </main>
 
   </section>
 
 
 
-  <section  id="kamar">
-      <h1 class="text-center text-6xl mt-12 mb-4 font-sans font-bold text-slate-800">Tipe Kamar</h1>
-      <p class="text-center text-xl text-slate-800 font-normal mb-8">Menyediakan Kamar yang nyaman,tenang dan terjangkau di pusat kota.</p>
+  <section  id="kamar"  data-aos="fade-up"  data-aos-duration="1000" >
+      <h1 class="text-center text-6xl mt-12 mb-4 font-sans font-bold text-slate-800" data-aos="zoom-in">Tipe Kamar</h1>
+      <p class="text-center text-xl text-slate-800 font-normal mb-8 " data-aos="zoom-in">Menyediakan Kamar yang nyaman,tenang dan terjangkau di pusat kota.</p>
 
    <div class="container grid grid-cols-2 gap-32 max-w-7xl mx-auto">
 
@@ -114,11 +129,11 @@
 
 
 
-  <section id="foto">
+  <section id="foto" data-aos="fade-up"  data-aos-duration="1000">
          <h1 class="text-center text-6xl mt-40 mb-4 font-sans font-bold text-slate-800">Foto Kamar</h1>
          <p class="text-center text-xl text-slate-800 font-normal mb-8">Kami menawarkan kamar dengan harga terjangkau dan nyaman</p>
 
-         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 max-w-6xl  mx-auto py-8 ">
+         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 max-w-6xl  mx-auto py-8 " data-aos-anchor-placement="top-bottom">
             @foreach ($foto as $f)
                 <a href="#" class="block">
                     <img alt="Foto" src="{{ asset('storage/' . $f->image) }}"
@@ -195,18 +210,152 @@
 
 
 
-<section id="review" class="mt-32">
+<!-- Review Section -->
+<section id="review" class="mt-24">
+  <h1 class="px-8 font-sans font-bold text-slate-800 text-3xl mb-6">
+    Apa Kata Mereka
+  </h1>
 
-  <h1 class="px-8 font-sans font-bold text-slate-800 text-3xl">Apa Kata Mereka</h1>
+  <!-- Swiper Container -->
+  <div class="swiper mySwiper px-8 ">
+    <div class="swiper-wrapper">
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl  mx-auto py-8">
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <article class="rounded-xl border-2 border-gray-100 bg-white p-2 w-[320px] h-32">
+            <div class="flex items-start gap-2">
+                <img alt="" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=1160" class="size-14 rounded-lg object-cover">
+                <div>
+                    <h3 class="font-medium text-lg">Question about Rendering</h3>
+                    <p class="text-sm text-gray-700">Lorem ipsum dolor sit amet consectetur...</p>
+                </div>
+            </div>
+        </article>
+      </div>
 
-    
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <article class="rounded-xl border-2 border-gray-100 bg-white p-2 w-[320px] h-32">
+            <div class="flex items-start gap-2">
+                <img alt="" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=1160" class="size-14 rounded-lg object-cover">
+                <div>
+                    <h3 class="font-medium text-lg">Bagus banget!</h3>
+                    <p class="text-sm text-gray-700">Kostnya bersih, nyaman, dan harga oke.</p>
+                </div>
+            </div>
+        </article>
+      </div>
+
+      <!-- Tambah slide lainnya di sini -->
+
+      <div class="swiper-slide">
+        <article class="rounded-xl border-2 border-gray-100 bg-white p-2 w-[320px] h-32">
+            <div class="flex items-start gap-2">
+                <img alt="" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=1160" class="size-14 rounded-lg object-cover">
+                <div>
+                    <h3 class="font-medium text-lg">Bagus banget!</h3>
+                    <p class="text-sm text-gray-700">Kostnya bersih, nyaman, dan harga oke.</p>
+                </div>
+            </div>
+        </article>
+      </div>
+
+
+      <div class="swiper-slide">
+        <article class="rounded-xl border-2 border-gray-100 bg-white p-2 w-[320px] h-32">
+            <div class="flex items-start gap-2">
+                <img alt="" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=1160" class="size-14 rounded-lg object-cover">
+                <div>
+                    <h3 class="font-medium text-lg">Bagus banget!</h3>
+                    <p class="text-sm text-gray-700">Kostnya bersih, nyaman, dan harga oke.</p>
+                </div>
+            </div>
+        </article>
+      </div>
+
+
+      <div class="swiper-slide">
+        <article class="rounded-xl border-2 border-gray-100 bg-white p-2 w-[320px] h-32">
+            <div class="flex items-start gap-2">
+                <img alt="" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=1160" class="size-14 rounded-lg object-cover">
+                <div>
+                    <h3 class="font-medium text-lg">Bagus banget!</h3>
+                    <p class="text-sm text-gray-700">Kostnya bersih, nyaman, dan harga oke.</p>
+                </div>
+            </div>
+        </article>
+      </div>
+
+
+      <div class="swiper-slide">
+        <article class="rounded-xl border-2 border-gray-100 bg-white p-2 w-[320px] h-32">
+            <div class="flex items-start gap-2">
+                <img alt="" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=1160" class="size-14 rounded-lg object-cover">
+                <div>
+                    <h3 class="font-medium text-lg">Bagus banget!</h3>
+                    <p class="text-sm text-gray-700">Kostnya bersih, nyaman, dan harga oke.</p>
+                </div>
+            </div>
+        </article>
+      </div>
+
+
+
+      <div class="swiper-slide">
+        <article class="rounded-xl border-2 border-gray-100 bg-white p-2 w-[320px] h-32">
+            <div class="flex items-start gap-2">
+                <img alt="" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=1160" class="size-14 rounded-lg object-cover">
+                <div>
+                    <h3 class="font-medium text-lg">Bagus banget!</h3>
+                    <p class="text-sm text-gray-700">Kostnya bersih, nyaman, dan harga oke.</p>
+                </div>
+            </div>
+        </article>
+      </div>
+
+
+      <div class="swiper-slide">
+        <article class="rounded-xl border-2 border-gray-100 bg-white p-2 w-[320px] h-32">
+            <div class="flex items-start gap-2">
+                <img alt="" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&q=80&w=1160" class="size-14 rounded-lg object-cover">
+                <div>
+                    <h3 class="font-medium text-lg">Bagus banget!</h3>
+                    <p class="text-sm text-gray-700">Kostnya bersih, nyaman, dan harga oke.</p>
+                </div>
+            </div>
+        </article>
+      </div>
+
+    </div>
   </div>
 </section>
 
 
 
+
+<footer class="mt-20 xl:mt-32 mx-auto w-full relative text-center bg-slate-900 text-white text-pretty">
+    <div class="px-6 py-8 md:py-14 xl:pt-20 xl:pb-12">
+        <h2 class="font-bold text-3xl xl:text-4xl leading-snug">
+            Jadi tunggu apa <span class="text-orange-600">lagi</span><br> Segera pesan di Wijaya<span class="text-orange-600">Kost.</span> sekarang
+        </h2>
+        
+        <div class="mt-6 xl:mt-20 ">
+            <nav class="flex flex-wrap justify-center text-lg font-medium">
+                <div class="px-5 py-2 transition hover:text-orange-600"><a href="#home">Home</a></div>
+                <div class="px-5 py-2 transition hover:text-orange-600"><a href="#kamar">Tipe Kamar</a></div>
+                <div class="px-5 py-2 transition hover:text-orange-600"><a href="#foto">Foto Kamar</a></div>
+                <div class="px-5 py-2 transition hover:text-orange-600"><a href="#lokasi">Lokasi</a></div>
+                <div class="px-5 py-2 transition hover:text-orange-600"><a href="#review">Review</a></div>
+                
+            </nav>
+
+            <div class="border-t border-slate-500 mt-8 pt-8 text-center text-white">
+                 <p class="mt-4 text-base">© 2025 Created By Steven Wijaya</p>
+            </div>
+           
+        </div>
+    </div>
+</footer>
 
 
 
@@ -242,6 +391,48 @@
             @endif
         @endauth
       </div> --}}
+
+<script>
+
+  new TypeIt("#text", {
+    speed: 60,
+    afterComplete: (instance) => {
+        instance.destroy();
+
+       
+        document.getElementById("multiple").style.display = "block";
+
+        new TypeIt("#multiple", {
+            strings: "",
+            speed: 60,
+            afterComplete: (i2) => i2.destroy()
+        }).go();
+    }
+})
+
+.pause(500)
+.go();
+
+
+new Swiper(".mySwiper", {
+  slidesPerView: 4,
+  loop: true,
+  spaceBetween: 0, // ganti ke 5 / 0 kalau mau lebih rapat
+  autoplay: {
+    delay: 0,
+    disableOnInteraction: false,
+  },
+  speed: 3000,
+});
+
+
+
+
+  
+    
+    
+
+</script>
 
 </body>
 </html>

@@ -4,3 +4,8 @@
     align-items: center;
     background-image: url('../foto/kos-kosan.jpg');
 } */
+
+
+.swiper-slide {
+  width: 300px !important;
+}
