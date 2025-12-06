@@ -5,45 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>WijayaKost</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- CDN boleh -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                zIndex: {
+                    '9999': '9999',
+                }
+            }
+        }
+    }
+    </script>
 
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+    <!-- INI YANG BENAR -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
 </head>
+
 <body  class="bg-slate-100">
- <nav class="bg-slate-900 py-2 top-0 right-0 left-0 z-99 fixed">
-        <div class="container mx-auto flex items-center justify-between py-2 px-8  ">
+ <nav class="fixed top-0 left-0 right-0 bg-slate-900 py-3 z-[9999] shadow-lg">
+    <div class="container mx-auto flex items-center justify-between px-8">
 
-            <div class="flex-1 ml-8 text-white font-bold font-sans">
-                <a href="" class="inline-block w-64 text-4xl hover:text-orange-600">
-                    WijayaKost
-                </a>
-            </div>
-
-           <div class="flex gap-12 flex-1 justify-center font-semibold text-white">
-                <a class=" transition hover:text-orange-600 whitespace-nowrap" href="#home">Home</a>
-                <a class=" transition hover:text-orange-600 whitespace-nowrap" href="#kamar">Tipe Kamar</a>
-                <a class=" transition hover:text-orange-600 whitespace-nowrap" href="#foto">Foto Kamar</a>
-                <a class=" transition hover:text-orange-600 whitespace-nowrap" href="#lokasi">Lokasi</a>
-                <a class=" transition hover:text-orange-600 whitespace-nowrap" href="#review">Review</a>
-            </div>
-
-
-            <div class="flex-1 flex justify-end text-white font-bold font-mono mr-8">
-                <button class="bg-orange-600 px-4 py-2 rounded-md hover:bg-orange-800 "><i class="fa-brands fa-whatsapp "></i>   Hubungi</button>
-            </div>
-
+        <div class="flex-1 text-white font-bold font-sans">
+            <a href="" class="inline-block text-3xl hover:text-orange-600">
+                WijayaKost
+            </a>
         </div>
-    </nav>
+
+        <div class="flex gap-12 flex-1 justify-center font-semibold text-white">
+            <a class="hover:text-orange-600  whitespace-nowrap" href="#home">Home</a>
+            <a class="hover:text-orange-600  whitespace-nowrap" href="#kamar">Tipe Kamar</a>
+            <a class="hover:text-orange-600 whitespace-nowrap" href="#foto">Foto Kamar</a>
+            <a class="hover:text-orange-600 whitespace-nowrap" href="#lokasi">Lokasi</a>
+            <a class="hover:text-orange-600 whitespace-nowrap" href="#review">Review</a>
+        </div>
+
+        <div class="flex-1 flex justify-end text-white font-bold font-mono">
+            <button class="bg-orange-600 px-4 py-2 rounded-md hover:bg-orange-800">
+                <i class="fa-brands fa-whatsapp"></i> Hubungi
+            </button>
+        </div>
+
+    </div>
+</nav>
 
 
 
-  <section class="hero h-screen bg-cover bg-center relative flex items-center justify-center" id="home"
+
+  <section class=" hero h-screen bg-cover bg-center relative flex items-center justify-center" id="home"
           style="background-image: url('{{ asset('storage/foto/kosan.jpg') }}')">
 
       
@@ -333,14 +349,14 @@
 
 
 
-<footer class="mt-20 xl:mt-32 mx-auto w-full relative text-center bg-slate-900 text-white text-pretty">
+<footer class="mt-20 xl:mt-32 mx-auto w-full relative text-center bg-slate-900 text-white font-sans">
     <div class="px-6 py-8 md:py-14 xl:pt-20 xl:pb-12">
-        <h2 class="font-bold text-3xl xl:text-4xl leading-snug">
-            Jadi tunggu apa <span class="text-orange-600">lagi</span><br> Segera pesan di Wijaya<span class="text-orange-600">Kost.</span> sekarang
+        <h2 class="font-bold text-3xl xl:text-4xl leading-snug" id="footer">
+            Jadi tunggu apa <span class="text-orange-600">lagi</span><br> Segera pesan di Wijaya<span class="text-orange-600">Kost.</span> Sekarang!!!
         </h2>
         
         <div class="mt-6 xl:mt-20 ">
-            <nav class="flex flex-wrap justify-center text-lg font-medium">
+            <nav class="flex flex-wrap justify-center text-base font-normal">
                 <div class="px-5 py-2 transition hover:text-orange-600"><a href="#home">Home</a></div>
                 <div class="px-5 py-2 transition hover:text-orange-600"><a href="#kamar">Tipe Kamar</a></div>
                 <div class="px-5 py-2 transition hover:text-orange-600"><a href="#foto">Foto Kamar</a></div>
@@ -412,6 +428,15 @@
 
 .pause(500)
 .go();
+
+
+new TypeIt('#footer', {
+  strings: '',
+  speed: 50, 
+  afterComplete: function (instance) {
+    instance.destroy();
+  }
+}).go();
 
 
 new Swiper(".mySwiper", {

@@ -24,4 +24,6 @@
             </x-primary-button>
         </div>
     </form>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </x-guest-layout>

@@ -28,4 +28,6 @@
             </button>
         </form>
     </div>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </x-guest-layout>

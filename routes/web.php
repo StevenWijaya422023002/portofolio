@@ -7,15 +7,13 @@ use App\Http\Controllers\InfoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
+
 Route::get('/info', [InfoController::class, 'tampil'])->name('info.tampil');
 Route::get('/info/tambah', [InfoController::class, 'tambah'])->name('info.tambah');
-Route::post('/info/submit', [InfoController::class, 'submit'])->name('info.sumbit');
+Route::post('/info/submit', [InfoController::class, 'submit'])->name('info.submit');
 Route::get('/info/edit/{id}', [InfoController::class, 'edit'])->name('info.edit');
 Route::post('/info/update/{id}', [InfoController::class, 'update'])->name('info.update');
 Route::post('/info/delete/{id}', [InfoController::class, 'delete'])->name('info.delete');
@@ -28,14 +26,23 @@ Route::get('/foto/edit/{id}', [FotoController::class, 'edit'])->name('foto.edit'
 Route::post('/foto/update/{id}', [FotoController::class, 'update'])->name('foto.update');
 Route::post('/foto/delete/{id}', [FotoController::class, 'delete'])->name('foto.delete');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+
+// Route::get('/dashboard', [DashboardController::class, 'index'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/secret/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
+});
+
 
 require __DIR__.'/auth.php';
